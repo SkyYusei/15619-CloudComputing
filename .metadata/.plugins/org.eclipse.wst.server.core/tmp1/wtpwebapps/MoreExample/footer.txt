@@ -1,3 +1,0 @@
-<p>Thank you for visiting.</p> 
-
-<%= title + " " + new java.util.Date() %>
