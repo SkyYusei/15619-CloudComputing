@@ -1,0 +1,31 @@
+package test2;
+
+import java.io.IOException;
+
+
+import org.apache.hadoop.hbase.client.Get;
+import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.rest.client.Client;
+import org.apache.hadoop.hbase.rest.client.Cluster;
+import org.apache.hadoop.hbase.rest.client.RemoteHTable;
+import org.apache.hadoop.hbase.util.Bytes;
+
+
+
+public class test {
+
+    public static void main(String[] args) throws IOException{
+        
+        Cluster cluster=new Cluster();  
+        cluster.add("52.91.151.41", 8080);  
+        Client client=new Client(cluster);  
+        RemoteHTable table=new RemoteHTable(client, "test");  
+        Get get=new Get(Bytes.toBytes("row6"));  
+        get.addColumn(Bytes.toBytes("family1"), Bytes.toBytes("column6"));  
+        Result result=table.get(get);  
+        System.out.println(result);  
+        table.close();  
+        
+    }
+
+}

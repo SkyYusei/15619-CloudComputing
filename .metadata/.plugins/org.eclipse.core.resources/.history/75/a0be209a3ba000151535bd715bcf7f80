@@ -1,0 +1,11 @@
+
+public class testsp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String a = "123:123:123:";
+		String[] b = a.split(":");
+		System.out.println(b.length);
+	}
+
+}

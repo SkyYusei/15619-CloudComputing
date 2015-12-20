@@ -1,0 +1,28 @@
+package test2;
+
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.client.HTableInterface;
+import org.apache.hadoop.hbase.client.HTablePool;
+
+public class test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Configuration configuration = HBaseConfiguration.create();
+        configuration.set("hbase.master", "ec2-54-173-158-53.compute-1.amazonaws.com:2181");
+        HTablePool pool = new HTablePool();
+        HTableInterface linktable = pool.getTable("test");
+        
+        
+        try {
+			linktable.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,16 @@
+import org.apache.hadoop.hbase.rest.client.Client;
+import org.apache.hadoop.hbase.rest.client.Cluster;
+import org.apache.hadoop.hbase.rest.client.RemoteHTable;
+
+public class test {
+	public static  main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Cluster cluster=new Cluster();  
+        cluster.add("54.173.194.208:8080", 8080);  
+        Client client=new Client(cluster);
+        
+        RemoteHTable table=new RemoteHTable(client, "links");  
+	}
+
+}

@@ -1,0 +1,215 @@
+package com.cloudcomputing.samza.pitt_cabs;
+
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.HashMap;
+
+import org.apache.samza.config.Config;
+import org.apache.samza.storage.kv.Entry;
+import org.apache.samza.storage.kv.KeyValueIterator;
+import org.apache.samza.storage.kv.KeyValueStore;
+import org.apache.samza.system.IncomingMessageEnvelope;
+import org.apache.samza.system.OutgoingMessageEnvelope;
+import org.apache.samza.task.InitableTask;
+import org.apache.samza.task.MessageCollector;
+import org.apache.samza.task.StreamTask;
+import org.apache.samza.task.TaskContext;
+import org.apache.samza.task.TaskCoordinator;
+import org.apache.samza.task.WindowableTask;
+
+/**
+ * Consumes the stream of driver location updates and rider cab requests.
+ * Outputs a stream which joins these 2 streams and gives a stream of rider
+ * to driver matches.
+ */
+public class DriverMatchTask implements StreamTask, InitableTask, WindowableTask {
+
+  /* Define per task state here. (kv stores etc) */
+	private KeyValueStore<String, String> driverloc;
+	private KeyValueStore<String, String> avalist;
+	//private KeyValueStore<String, String> riderloc;
+	//private KeyValueStore<String, String> driverlist;
+  @Override
+  @SuppressWarnings("unchecked")
+  public void init(Config config, TaskContext context) throws Exception {
+	//Initialize stuff (maybe the kv stores?)
+	 //to save driver's location and block
+	  //just like (block+driverid, lat+lon )
+	driverloc =(KeyValueStore<String, String>)context.getStore("driver-loc");
+	avalist = (KeyValueStore<String, String>)context.getStore("block-available");
+	//driverlist =(KeyValueStore<String, String>)context.getStore("driver-list");
+	
+  }
+
+  @Override
+  @SuppressWarnings("unchecked")
+  public void process(IncomingMessageEnvelope envelope, MessageCollector collector, TaskCoordinator coordinator) {
+	// The main part of your code. Remember that all the messages for a particular partition
+	// come here (somewhat like MapReduce). So for task 1 messages for a blockId will arrive
+	// at one task only, thereby enabling you to do stateful stream processing.
+	  String incomingStream = envelope.getSystemStreamPartition().getStream();
+	  
+	  if(incomingStream.equals(DriverMatchConfig.DRIVER_LOC_STREAM.getStream())){
+		 //process location log
+		  processdriverlocations((Map<String, Object>) envelope.getMessage(), collector);
+	  }else if(incomingStream.equals(DriverMatchConfig.EVENT_STREAM.getStream())){
+		  //process event
+		  processevent((Map<String, Object>)envelope.getMessage(), collector);
+	  }else{
+	      throw new IllegalStateException("Unexpected input stream: " + envelope.getSystemStreamPartition());
+	  }
+  }
+
+  public void processdriverlocations(Map<String, Object> message, MessageCollector collector) {
+	//if it is not location file  throw exception
+	  if(!message.get("type").equals("DRIVER_LOCATION")){
+	      throw new IllegalStateException("Unexpected event type on follows stream: " + message.get("event"));
+	}
+	  
+	 //parse values
+	String driverId = (int) message.get("driverId")+"";
+	String latitude =(int) message.get("latitude")+"";
+	String longitude = (int) message.get("longitude")+"";
+	String block = (int)message.get("blockId")+"";
+	//put in the store 
+	driverloc.delete(driverId);
+	driverloc.put(driverId,block+":"+latitude+":"+longitude);
+
+  }
+  
+  public void processevent(Map<String, Object> message, MessageCollector collector) { 
+	//get the driver's event
+	  if(message.get("type").equals("LEAVING_BLOCK")||message.get("type").equals("ENTERING_BLOCK")){
+		  String driverId = (int) message.get("driverId")+"";
+		  String latitude =(int) message.get("latitude")+"";
+		  String longitude = (int) message.get("longitude")+"";
+		  String block = (int)message.get("blockId")+"";
+		  //if availabe put in store
+		  if(message.get("status").equals("AVAILABLE")){
+			driverloc.delete(driverId);
+		    driverloc.put(driverId,block+":"+latitude+":"+longitude);
+		  }else{
+		//if not just delete it
+			  driverloc.delete(driverId);
+		  }		
+		  //if it is RIDE_COMP put back to store
+	}else if(message.get("type").equals("RIDE_COMPLETE")){
+		String driverId = (int) message.get("driverId")+"";
+		String latitude =(int) message.get("latitude")+"";
+		String longitude = (int) message.get("longitude")+"";
+		String block = (int)message.get("blockId")+"";
+		driverloc.delete(driverId);
+		driverloc.put(driverId,block+":"+latitude+":"+longitude);
+
+	}else if(message.get("type").equals("RIDE_REQUEST")){
+		//if it is a request
+		//parse values
+		String riderId = (int) message.get("riderId")+"";
+		int rlatitude =(int) message.get("latitude");
+		int rlongitude = (int) message.get("longitude"); 
+		String rblock = (int)message.get("blockId")+"";
+		String ava = avalist.get(rblock);
+		
+		//count the sfp
+		KeyValueIterator<String, String> getsize = driverloc.all();
+		int size = 0;
+		//get the size of drivers in this block
+		while(getsize.hasNext()){
+			if(((String)getsize.next().getValue().split(":")[0]).equals(rblock)){
+				size++;
+			};	
+		}
+		//add size to the string
+		if(!ava.trim().equals("")){
+			ava = size+":"+ava;
+		}else{
+			ava = size+"";
+		}
+		
+		
+		//split the string 
+		String[] ava_sp = ava.split(":");
+		
+		double spf =1.0;
+		//if <5 just 1
+		if((ava_sp.length)<5){
+			spf=1.0;
+			avalist.put(rblock, ava);
+		}else{
+			int sum = 0;
+			double A =0;
+			//get the first 5 num
+			for(String dnum: ava_sp){
+				try {
+					if(!dnum.trim().equals("")){
+						sum+=Integer.parseInt(dnum);
+						A = sum/5;
+					}
+				} catch (NumberFormatException e) {
+					// TODO: handle exception
+				}
+				
+			}
+			avalist.put(rblock, ava_sp[0]+":"+ava_sp[1]+":"+ava_sp[2]+":"+ava_sp[3]+":"+ava_sp[4]);
+			if(A>=1.8){
+				  spf =1.0;
+			}else{
+				  double sf =  (8 *(1.8 - A)/(1.8 - 1.0));
+				  spf = sf+1.0;
+		    } 
+		}
+		getsize.close();
+		
+		
+		
+		
+		// scan map and get the nearest driver
+		//just like example code 
+		// Colon is used as separator, and semicolon is lexicographically after colon
+		KeyValueIterator<String, String> drivers = driverloc.all();
+		String driverId = "";
+		String key = "";
+		int distance = Integer.MAX_VALUE;
+		try{
+			while(drivers.hasNext()){
+				Entry<String, String> e = drivers.next();
+				String ekey = e.getKey();
+				String evalue=e.getValue();
+				String[] ll = evalue.split(":");
+				if((ll.length ==3)){
+					int dlat = Integer.parseInt(ll[1]);
+					int dlon = Integer.parseInt(ll[2]);
+					//calculate the distance and always get the nearest driver
+					int b =((int)Math.pow((dlat-rlatitude), 2)+(int)Math.pow((dlon-rlongitude), 2));
+					if(b<distance){
+						distance = b;
+						driverId = ekey;
+						key =  ekey;
+					}
+				}
+			}
+		}catch(NoSuchElementException e){
+			
+		}
+		drivers.close();
+		
+		//finish scan and send out driverid and riderid 
+		HashMap<String,Object> match = new HashMap<>();
+		if((!driverId.equals(""))&&(!key.equals(""))){
+			match.put("driverId", Integer.parseInt(driverId));
+			match.put("riderId", Integer.parseInt(riderId));
+			match.put("priceFactor", spf);
+			//most important     if match a driver delete from the map
+			driverloc.delete(key);
+			collector.send(new OutgoingMessageEnvelope(DriverMatchConfig.MATCH_STREAM,null,null,match));
+		}
+		
+	}
+  }
+  
+
+  @Override
+  public void window(MessageCollector collector, TaskCoordinator coordinator) {
+	//this function is called at regular intervals, not required for this project
+  }
+}

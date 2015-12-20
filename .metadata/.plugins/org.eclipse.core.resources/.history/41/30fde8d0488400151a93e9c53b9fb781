@@ -1,0 +1,37 @@
+import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.client.Get;
+import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.client.ResultScanner;
+import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.util.Bytes;
+import org.apache.hadoop.hbase.client.HTablePool;
+import org.apache.hadoop.hbase.client.HTableInterface;
+import org.apache.hadoop.hbase.KeyValue;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.client.HConnection;
+import org.apache.hadoop.hbase.client.HConnectionManager;
+
+public class test {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args)throws Exception {
+		Configuration configuration = HBaseConfiguration.create();
+        configuration.set("hbase.zookeeper.quorum", "54.173.158.53");
+        HTablePool pool = new HTablePool();
+        HTableInterface linktable = pool.getTable("link");
+        
+        
+        linktable.close();
+		
+		
+		
+		Get get=new Get(Bytes.toBytes("row6"));
+		get.addColumn(Bytes.toBytes("family1"), Bytes.toBytes("column6"));
+		Result result=table.get(get);
+		System.out.println(result);
+		table.close();
+	}
+
+}

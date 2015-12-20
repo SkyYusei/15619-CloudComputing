@@ -1,0 +1,20 @@
+package test3;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.client.HTable;
+import org.apache.hadoop.hbase.client.HTableInterface;
+
+public class test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 Configuration configuration = new HBaseConfiguration().create();
+	        configuration.set("hbase.zookeeper.quorum", "54.164.43.132");
+	        configuration.set("hbase.zookeeper.property.clientPort", "2181");
+	        Configuration hcong = HBaseConfiguration.create(configuration);
+	        
+	        HTableInterface table = new HTable(hcong, "test");
+	}
+
+}

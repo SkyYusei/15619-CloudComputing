@@ -1,0 +1,50 @@
+# Job
+job.factory.class=org.apache.samza.job.yarn.YarnJobFactory
+job.name=driver-match
+#Put pitt_cabs-0.0.1-dist.tar.gz in HDFS and add the right path here.
+#Add INTERNAL IP of master instance here
+yarn.package.path=hdfs://ip-172-31-57-48.ec2.internal:8020/pitt_cabs-0.0.1-dist.tar.gz
+
+# Task
+task.class=com.cloudcomputing.samza.pitt_cabs.DriverMatchTask
+task.inputs=kafka.driver-locations,kafka.events
+task.checkpoint.factory=org.apache.samza.checkpoint.kafka.KafkaCheckpointManagerFactory
+task.checkpoint.system=kafka
+# Normally this would be 3, but in development we have only one broker.
+task.checkpoint.replication.factor=1
+
+# Serializers
+serializers.registry.json.class=org.apache.samza.serializers.JsonSerdeFactory
+serializers.registry.string.class=org.apache.samza.serializers.StringSerdeFactory
+
+# Kafka
+systems.kafka.samza.factory=org.apache.samza.system.kafka.KafkaSystemFactory
+systems.kafka.samza.msg.serde=json
+#You should add the master INTERNAL ip here e.g ip-xx-xx-xx-xx.ec2.internal:2181
+systems.kafka.consumer.zookeeper.connect=ip-172-31-57-48.ec2.internal:2181/
+#Put comma-separated list of INTERNAL ip of ALL machines (including master) in your cluster here 
+#e.g ip-xx-xx-xx-xx.ec2.internal:9092,ip-xx-xx-xx-xx.ec2.internal:9092,ip-xx-xx-xx-xx.ec2.internal:9092
+systems.kafka.producer.bootstrap.servers=ip-172-31-60-134.ec2.internal:9092,ip-172-31-62-42.ec2.internal:9092,ip-172-31-59-238.ec2.internal:9092
+
+#Consume the stream from the beginning of time so we can grade it deterministically
+systems.kafka.streams.driver-locations.samza.offset.default=oldest
+systems.kafka.streams.driver-locations.samza.reset.offset=true
+systems.kafka.streams.events.samza.offset.default=oldest
+systems.kafka.streams.events.samza.reset.offset=true
+
+#Add KV stores you wish to use in your code here. Remove these or add more as you see fit 
+#'driver-loc' is the name you will use to get a reference to this KV store (refer writeup)
+stores.driver-loc.factory=org.apache.samza.storage.kv.RocksDbKeyValueStorageEngineFactory
+stores.driver-loc.changelog=kafka.driver-loc-changelog
+stores.driver-loc.key.serde=string
+stores.driver-loc.msg.serde=string
+stores.driver-loc.changelog.replication.factor=1
+
+stores.block-available.factory=org.apache.samza.storage.kv.RocksDbKeyValueStorageEngineFactory
+stores.block-available.changelog=kafka.block-available-changelog
+stores.block-available.key.serde=string
+stores.block-available.msg.serde=string
+stores.block-available.changelog.replication.factor=1
+
+
+
