@@ -1,0 +1,2 @@
+scan 'songdata', {COLUMNS => ['data:artist_name', 'data:title'], FILTER => "SingleColumnValueFilter('data', 'title', = , 'regexstring:^Total.*Water$')"}
+

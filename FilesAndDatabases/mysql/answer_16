@@ -1,0 +1,4 @@
+For the micro because its cache is small and the I/O speed is slower too, for the Magnetic Disk, the limitation is the disk's I/O speed, but for the SSD, the when the cache is fully warm-up(store the most possible files), the limitation is the cache's I/O speed;
+
+For large because its I/O speed is much fast than micro, and for the Magnetic Disk, the limitation is still the disk's I/O speed, but due to the help of large cache, the speed became faster; for the SSD, the limitation is SSD's I/O speed, because the uprise stopped in the second test. 
+

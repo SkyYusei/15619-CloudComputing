@@ -1,0 +1,16 @@
+#                                                                                                         #
+#Enter all the references below (stackoverflow, or any other links) that you used to complete this project#
+#                                                                                                         #
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/JavaQueryScanORMModelExample.html #DynamoDB example
+
+http://blog.csdn.net/hxpjava1/article/details/19981675 #use the rest api to connect hbase
+
+https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#deployment #rest api
+
+https://code.google.com/p/json-simple/wiki/EncodingExamples #json encode
+
+#                                                                                    #
+#Enter all the andrew IDs of all the people who helped you in completing this project#
+#                                                                                    #
+
+

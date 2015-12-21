@@ -1,0 +1,7 @@
+http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicInteger.html #AtomicInteger
+
+http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ConcurrentHashMap.html #ConcurrentHashMap
+http://javahungry.blogspot.com/2014/02/hashmap-vs-concurrenthashmap-java-collections-interview-question.html
+
+https://docs.oracle.com/javase/tutorial/essential/concurrency/simple.html #multi threads
+

@@ -1,0 +1,1 @@
+scan 'songdata', {COLUMNS => ['data:artist_name', 'data:title'], FILTER => "SingleColumnValueFilter('data', 'artist_name', = , 'regexstring:Kanye West') AND(SingleColumnValueFilter('data', 'title', = , 'regexstring:^Apologies') OR SingleColumnValueFilter('data', 'title', = , 'regexstring:^Confessions'))"}

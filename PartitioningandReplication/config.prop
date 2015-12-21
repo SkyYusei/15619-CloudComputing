@@ -1,0 +1,4 @@
+COORDINATOR=ec2-54-165-171-124.compute-1.amazonaws.com
+DATACENTER1=ec2-54-165-158-60.compute-1.amazonaws.com
+DATACENTER2=ec2-54-165-121-220.compute-1.amazonaws.com
+DATACENTER3=ec2-54-152-17-141.compute-1.amazonaws.com

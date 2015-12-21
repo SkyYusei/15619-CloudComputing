@@ -1,0 +1,2 @@
+scan 'songdata', {COLUMNS => ['data:title' ,'data:artist_name', 'data:year'], FILTER => "SingleColumnValueFilter('data', 'artist_name', = , 'regexstring:.*Gwen Guthrie.*') AND SingleColumnValueFilter('data', 'title', = , 'regexstring:^(?!.*(Bitter|Never))') AND SingleColumnValueFilter('data', 'title', = , 'regexstring:.*Love.*') AND SingleColumnValueFilter('data', 'year', >= , 'binary:1990')"}
+ 

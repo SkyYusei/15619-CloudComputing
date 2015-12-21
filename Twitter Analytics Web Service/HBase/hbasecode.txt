@@ -1,0 +1,20 @@
+aws emr create-cluster --name “HBaseEMR” --ami-version 3.9.0 --applications Name=HBase --use-default-roles --ec2-attributes KeyName=project --instance-type m1.large --instance-count 5 --termination-protected --bootstrap-action Path=s3://elasticmapreduce/bootstrap-actions/configure-hbase-daemons,Args=["--hbase-zookeeper-opts=-Xmx4096m -XX:GCTimeRatio=9”,”—hbase-master-opts=-Xmx8192m","--hbase-regionserver-opts=-Xmx8192m"]
+
+
+
+create'q2', {NAME => 'data', DATA_BLOCK_ENCODING => 'FAST_DIFF', COMPRESSION => 'SNAPPY', BLOCKSIZE => '131072', IN_MEMORY => 'true', BLOCKCACHE => 'true'}
+
+create'q4’, {NAME => 'data', DATA_BLOCK_ENCODING => 'FAST_DIFF', COMPRESSION => 'SNAPPY', BLOCKSIZE => '131072', IN_MEMORY => 'true', BLOCKCACHE => 'true'}
+
+
+
+hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=,' -Dimporttsv.columns=HBASE_ROW_KEY,data:text, q2 s3://q2csv
+
+hbase org.apache.hadoop.hbase.mapreduce.ImportTsv '-Dimporttsv.separator=,' -Dimporttsv.columns=HBASE_ROW_KEY,data:text, q4 s3://q4csv
+
+
+aws emr create-hbase-backup --cluster-id j-1EZJEN3IGWIOE --dir s3://q2csv/backups/j-3ESQZCYLU9U2X
+
+aws emr create-hbase-backup --cluster-id j-1EZJEN3IGWIOE --dir s3://q4csv/backups/j-2RYTCQJC5PROI
+
+aws emr restore-from-hbase-backup --cluster-id j-1EZJEN3IGWIOE --dir s3://q4csv/backups/j-2RYTCQJC5PROI --backup-version 20151111T162715Z

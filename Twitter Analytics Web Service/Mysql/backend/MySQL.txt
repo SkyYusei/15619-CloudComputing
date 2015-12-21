@@ -1,0 +1,285 @@
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00001 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00002 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00003 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00004 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00005 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00006 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00007 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00008 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00009 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00010 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00011 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00012 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00013 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00014 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00015 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00016 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00017 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00018 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00019 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00020 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00021 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00022 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00023 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00024 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00025 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00026 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00000 &
+nohup wget https://s3.amazonaws.com/ccp6/output/part-00018 &
+
+nohup wget https://s3.amazonaws.com/jarcodeforp1/output/part-00000 &
+nohup wget https://s3.amazonaws.com/jarcodeforp1/output/part-00001 &
+nohup wget https://s3.amazonaws.com/jarcodeforp1/output/part-00002 &
+nohup wget https://s3.amazonaws.com/jarcodeforp1/output/part-00003 &
+nohup wget https://s3.amazonaws.com/jarcodeforp1/output/part-00004 &
+nohup wget https://s3.amazonaws.com/jarcodeforp1/output/part-00005 &
+nohup wget https://s3.amazonaws.com/jarcodeforp1/output/part-00006 &
+nohup wget https://s3.amazonaws.com/jarcodeforp1/output/part-00007 &
+nohup wget https://s3.amazonaws.com/jarcodeforp1/output/part-00008 &
+nohup wget https://s3.amazonaws.com/jarcodeforp1/output/part-00009 &
+nohup wget https://s3.amazonaws.com/jarcodeforp1/output/part-00010 &
+
+
+
+https://s3.amazonaws.com/cmucc2015q3/output/part-00000
+
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00000 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00001 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00002 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00003 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00004 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00005 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00006 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00007 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00008 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00009 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00010 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00011 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00012 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00013 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00014 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00015 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00016 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00017 &
+nohup wget https://s3.amazonaws.com/cmucc2015q3/output/part-00018 &
+
+
+nohup wget https://s3.amazonaws.com/q3newxnmbyy/neg/part-00000 &
+nohup wget https://s3.amazonaws.com/q3newxnmbyy/neg/part-00001 &
+nohup wget https://s3.amazonaws.com/q3newxnmbyy/neg/part-00002 &
+nohup wget https://s3.amazonaws.com/q3newxnmbyy/neg/part-00003 &
+nohup wget https://s3.amazonaws.com/q3newxnmbyy/neg/part-00004 &
+nohup wget https://s3.amazonaws.com/q3newxnmbyy/neg/part-00005 &
+nohup wget https://s3.amazonaws.com/q3newxnmbyy/neg/part-00006 &
+cat part-000* > q3result
+
+wget https://s3.amazonaws.com/p41task2/task1result
+
+sudo su
+apt-get update
+apt-get install -y mysql
+
+vi /etc/mysql/my.cnf
+skip-external-locking
+init-connect='SET NAMES utf8mb4'
+collation_server=utf8mb4_unicode_ci
+character_set_server=utf8mb4
+skip-character-set-client-handshake
+
+service mysql restart
+
+create datebase ccq3;
+use ccq3;
+CREATE TABLE `ccq3p1` (`id` bigint(64), `user_id` bigint(64),`created_at` TIMESTAMP,`score` Integer,`text` varchar(600) charset 'utf8mb4' collate utf8mb4_unicode_ci) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+load data local infile '/home/ubuntu/data/o0' into table ccq3p1 character set 'utf8mb4' fields terminated by "ccprjctx";
+create INDEX p1_index1 on ccq3p1(user_id, created_at, score, id);
+
+https://s3.amazonaws.com/ccp6/output/part-00001
+
+SELECT text 
+FROM ccq3p1 
+AND user_id =  
+ORDER BY score DESC, id
+LIMIT
+
+CREATE TABLE `ccq2db` (CKey CHAR(50), `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+load data local infile '/home/ubuntu/data/result' into table ccq2db character set 'utf8mb4' fields terminated by "ccprjctx";
+
+load data local infile '/home/ubuntu/data/test' into table ccq2db character set 'utf8mb4' fields terminated by "ccprjctx";
+
+ 
+CREATE TABLE `ccq6db` (id bigint(64), `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci PARTITION BY HASH(id) PARTITIONS 16;
+ 
+use ccq3;
+CREATE TABLE `ccq3p1` (`user_id` bigint(64), `created_at` CHAR(11), `score` Integer,`id` bigint(64), `text` varchar(600) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci PARTITION BY HASH(user_id) PARTITIONS 32;
+CREATE TABLE `ccq3p2` (`user_id` bigint(64), `created_at` CHAR(11), `score` Integer,`id` bigint(64), `text` varchar(600) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci PARTITION BY HASH(user_id) PARTITIONS 32;
+load data local infile '/home/ubuntu/data/o0' into table ccq3p1 character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/data/o1' into table ccq3p2 character set 'utf8mb4' fields terminated by "ccprjctx";
+create INDEX p1_index1 on ccq3p1(user_id, created_at, score, id);
+create INDEX p2_index1 on ccq3p2(user_id, created_at, score, id);
+
+load data local infile '/home/ubuntu/q6/result' into table ccq6db character set 'utf8mb4' fields terminated by "ccprjctx";
+
+load data local infile '/home/ubuntu/result' into table follower terminated by "\t";
+
+load data local infile '/home/ubuntu/data/result' into table ccq2db character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/data/o0' into table ccq3p1 character set 'utf8mb4' fields terminated by "ccprjctx";
+
+CREATE TABLE `ccq2` (`id` bigint(64), `user_id` bigint(64),`created_at` CHAR(11),`score` Integer,`text` varchar(600) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `ccq2db` (`key` BINARY(30), `text` varchar(600) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+create INDEX p1_index1 on ccq3p1(user_id, score, created_at, id);
+
+
+/q3?start_date=2012-06-23&end_date=2015-11-30&userid=562358418&n=9
+
+
+create INDEX p1_index2 on ccq6db(id);
+
+
+explain SELECT text FROM ccq3p2 WHERE user_id = 32917823 AND created_at BETWEEN 1383004800 AND 1399161600 ORDER BY score DESC, id LIMIT 7;
+
+
+create INDEX p1_index on ccq6db(id);
+
+
+create INDEX p1_index1 on ccq3p1(user_id, created_at, score);
+create INDEX p1_index2 on ccq3p1(id);
+create INDEX p1_index3 on ccq3p1(created_at);
+create INDEX p1_index4 on ccq3p1(score);
+
+create INDEX p2_index1 on ccq3p2(user_id);
+create INDEX p2_index2 on ccq3p2(id);
+create INDEX p2_index3 on ccq3p2(created_at);
+create INDEX p2_index4 on ccq3p2(score);
+
+
+load data local infile '/home/ubuntu/users.csv' into table user_info fields terminated by ",";
+load data local infile '/home/ubuntu/userinfo.csv' into table user_profile fields terminated by ",";
+
+
+CREATE TABLE `ccq4db` (hashtag varchar(600) charset 'utf8mb4' collate utf8mb4_bin, `text` varchar(600000) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `ccq5db` (user_id bigint(64) primary key, tcount integer);
+load data local infile '/home/ubuntu/data/result' into table ccq5db fields terminated by ",";
+
+
+load data local infile '/home/ubuntu/data/q2result' into table ccq2db character set 'utf8mb4' fields terminated by "ccprjctx";
+CREATE TABLE `ccq3p1` (`user_id` bigint(64), `created_at` Integer, score Integer, id bigint(64), `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci PARTITION BY HASH(user_id) PARTITIONS 16;
+CREATE TABLE `ccq3p2` (`user_id` bigint(64), `created_at` Integer, score Integer, id bigint(64), `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci PARTITION BY HASH(user_id) PARTITIONS 16;
+
+load data local infile '/home/ubuntu/data/q3/o0' into table ccq3p1 character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/data/q3/o1' into table ccq3p2 character set 'utf8mb4' fields terminated by "ccprjctx";
+create index p31 on ccq3p1(user_id)
+load data local infile '/home/ubuntu/data/q3/o1' into table ccq3p2 character set 'utf8mb4' fields terminated by "ccprjctx";
+create index p32 on ccq3p2(user_id)
+
+
+
+sudo su 
+wget https://s3.amazonaws.com/q6part/result00
+wget https://s3.amazonaws.com/q6part/result01
+cat result* > result0-4
+apt-get update
+apt-get install -y mysql-server
+mysql -uroot -p --local-infile=1
+create database ccq6;
+use ccq6;
+CREATE TABLE `ccq6db` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci PARTITION BY HASH(id) PARTITIONS 64;
+load data local infile '/home/ubuntu/result0-4' into table ccq6db character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/result01' into table ccq6db character set 'utf8mb4' fields terminated by "ccprjctx";
+
+
+
+sudo su 
+wget https://s3.amazonaws.com/q6part/result02
+wget https://s3.amazonaws.com/q6part/result03
+apt-get update
+apt-get install -y mysql-server
+mysql -uroot -p --local-infile=1
+create database ccq6;
+use ccq6;
+CREATE TABLE `ccq6db` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci PARTITION BY HASH(id) PARTITIONS 64;
+load data local infile '/home/ubuntu/result02' into table ccq6db character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/result03' into table ccq6db character set 'utf8mb4' fields terminated by "ccprjctx";
+
+sudo su 
+wget https://s3.amazonaws.com/q6part/result04
+wget https://s3.amazonaws.com/q6part/result05
+apt-get update
+apt-get install -y mysql-server
+mysql -uroot -p --local-infile=1
+create database ccq6;
+use ccq6;
+CREATE TABLE `ccq6db` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci PARTITION BY HASH(id) PARTITIONS 64;
+load data local infile '/home/ubuntu/result04' into table ccq6db character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/result05' into table ccq6db character set 'utf8mb4' fields terminated by "ccprjctx";
+
+sudo su 
+wget https://s3.amazonaws.com/q6part/result06
+wget https://s3.amazonaws.com/q6part/result07
+apt-get update
+apt-get install -y mysql-server
+mysql -uroot -p --local-infile=1
+create database ccq6;
+use ccq6;
+CREATE TABLE `ccq6db` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci PARTITION BY HASH(id) PARTITIONS 64;
+load data local infile '/home/ubuntu/result06' into table ccq6db character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/result07' into table ccq6db character set 'utf8mb4' fields terminated by "ccprjctx";
+
+sudo su 
+wget https://s3.amazonaws.com/q6part/result08
+wget https://s3.amazonaws.com/q6part/result09
+apt-get update
+apt-get install -y mysql-server
+mysql -uroot -p --local-infile=1
+create database ccq6;
+use ccq6;
+CREATE TABLE `ccq6db` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci PARTITION BY HASH(id) PARTITIONS 64;
+load data local infile '/home/ubuntu/result08' into table ccq6db character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/result09' into table ccq6db character set 'utf8mb4' fields terminated by "ccprjctx";
+
+
+
+CREATE TABLE `ccq6p1` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `ccq6p2` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `ccq6p3` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `ccq6p4` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `ccq6p5` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `ccq6p6` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `ccq6p7` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `ccq6p8` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `ccq6p9` (id bigint(64) PRIMARY KEY, `text` varchar(700) charset 'utf8mb4' collate utf8mb4_unicode_ci) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+load data local infile '/home/ubuntu/data/q2/result00' into table ccq6p0 character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/data/q2/result01' into table ccq6p1 character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/data/q2/result02' into table ccq6p2 character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/data/q2/result03' into table ccq6p3 character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/data/q2/result04' into table ccq6p4 character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/data/q2/result05' into table ccq6p5 character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/data/q2/result06' into table ccq6p6 character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/data/q2/result07' into table ccq6p7 character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/data/q2/result08' into table ccq6p8 character set 'utf8mb4' fields terminated by "ccprjctx";
+load data local infile '/home/ubuntu/data/q2/result09' into table ccq6p9 character set 'utf8mb4' fields terminated by "ccprjctx";
+create INDEX p0 on ccq6p0(id);
+create INDEX p1 on ccq6p1(id);
+create INDEX p2 on ccq6p2(id);
+create INDEX p3 on ccq6p3(id);
+create INDEX p4 on ccq6p4(id);
+create INDEX p5 on ccq6p5(id);
+create INDEX p6 on ccq6p6(id);
+create INDEX p7 on ccq6p7(id);
+create INDEX p8 on ccq6p8(id);
+create INDEX p9 on ccq6p9(id);
+
+
+aws s3 cp result01 s3://q6part/
+aws s3 cp result02 s3://q6part/
+aws s3 cp result03 s3://q6part/
+aws s3 cp result04 s3://q6part/
+aws s3 cp result05 s3://q6part/
+aws s3 cp result06 s3://q6part/
+aws s3 cp result07 s3://q6part/
+aws s3 cp result08 s3://q6part/
+aws s3 cp result09 s3://q6part/
+
+
